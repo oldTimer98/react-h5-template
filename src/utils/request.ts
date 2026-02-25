@@ -1,22 +1,23 @@
 import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 import { Toast } from 'antd-mobile'
-import type { ApiResponse } from '@/types'
+import type { ApiResponse } from '@/types/api'
+import { getToken, clearAuth } from '@/stores/useUserStore'
+import { logRequest, logResponse, logError } from './log'
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
-  timeout: 15000,
+  timeout: Number(import.meta.env.VITE_API_TIMEOUT) || 15000,
 })
 
-// 请求拦截器 — 注入 Token
 instance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
+  const token = getToken()
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
+  logRequest(config)
   return config
 })
 
-// 响应拦截器 — 统一错误处理
 const HTTP_ERROR_MAP: Record<number, string> = {
   400: '请求参数错误',
   401: '登录已过期',
@@ -27,8 +28,15 @@ const HTTP_ERROR_MAP: Record<number, string> = {
   503: '服务不可用',
 }
 
+function handleUnauthorized() {
+  clearAuth()
+  window.location.href = '/login'
+}
+
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
+    logResponse(response)
+
     const raw = response.data
 
     if (typeof raw !== 'object' || raw === null || !('code' in raw)) {
@@ -40,20 +48,20 @@ instance.interceptors.response.use(
     if (res.code === 0 || res.code === 200) return response
 
     if (res.code === 401) {
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      handleUnauthorized()
     }
 
     Toast.show({ icon: 'fail', content: res.message || '请求失败' })
     return Promise.reject(new Error(res.message))
   },
   (error: AxiosError) => {
+    logError(error)
+
     const status = error.response?.status
     const msg = (status && HTTP_ERROR_MAP[status]) || '网络连接异常'
 
     if (status === 401) {
-      localStorage.removeItem('token')
-      window.location.href = '/login'
+      handleUnauthorized()
     } else {
       Toast.show({ icon: 'fail', content: msg })
     }

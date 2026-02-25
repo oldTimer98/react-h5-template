@@ -11,22 +11,30 @@
     "lint": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,scss,css,json}\"",
     "lint:style": "prettier --check \"src/**/*.{ts,tsx,scss,css,json}\"",
+    "commit": "czg",
     "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.21",
     "@tanstack/react-router": "^1.162.8",
     "antd-mobile": "^5.42.3",
+    "antd-mobile-icons": "^0.3.0",
     "axios": "^1.13.5",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.19",
     "eruda": "^3.4.3",
+    "es-toolkit": "^1",
+    "framer-motion": "^12.34.3",
+    "query-string": "^9.3.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.2",
+    "@commitlint/config-conventional": "^20.4.2",
     "@eslint/js": "^9.39.1",
+    "@iconify-json/carbon": "^1.2.18",
     "@tanstack/react-query-devtools": "^5.91.3",
     "@tanstack/router-devtools": "^1.162.8",
     "@tanstack/router-plugin": "^1.162.8",
@@ -36,6 +44,8 @@
     "@unocss/postcss": "^66.6.0",
     "@unocss/preset-rem-to-px": "^66.6.0",
     "@vitejs/plugin-react-swc": "^4.2.2",
+    "autoprefixer": "^10.4.24",
+    "czg": "^1.12.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -43,14 +53,15 @@
     "globals": "^16.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
+    "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "prettier": "^3.8.1",
     "sass": "^1.97.3",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
-    "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "unocss": "^66.6.0",
     "unocss-preset-scrollbar": "3.2.0",
-    "vite": "^7.3.1"
+    "vite": "^7.3.1",
+    "vite-plugin-compression2": "^2.4.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

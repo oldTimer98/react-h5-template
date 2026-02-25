@@ -1,5 +1,5 @@
 import { get, post, put, del } from '@/utils/request'
-import type { Todo, CreateTodoParams, UpdateTodoParams } from '@/types'
+import type { Todo, CreateTodoParams, UpdateTodoParams } from '@/types/todo'
 
 const todoApi = {
   getList: (params?: { _limit?: number; _page?: number }) => get<Todo[]>('/todos', params),

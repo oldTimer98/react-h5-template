@@ -1,5 +1,5 @@
 import { get, post } from '@/utils/request'
-import type { Post, CreatePostParams } from '@/types'
+import type { Post, CreatePostParams } from '@/types/post'
 
 const postApi = {
   getList: (params?: { _limit?: number; _page?: number }) => get<Post[]>('/posts', params),

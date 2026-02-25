@@ -1,0 +1,11 @@
+// ============================================================
+// antd-mobile 样式覆盖
+// 统一管理对 antd-mobile 默认样式的修正和定制
+// ============================================================
+
+// ErrorBlock fullPage 模式 - 图片居中
+.adm-error-block-full-page .adm-error-block-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

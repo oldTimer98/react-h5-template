@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import { routeTree } from './routeTree.gen'
 
 // ============================================================
@@ -45,11 +46,13 @@ const ReactQueryDevtools =
 // ============================================================
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <Suspense>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </Suspense>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <Suspense>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </Suspense>
+      </QueryClientProvider>
+    </ErrorBoundary>
   )
 }

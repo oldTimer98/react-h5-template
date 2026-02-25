@@ -14,8 +14,8 @@ import {
 } from 'antd-mobile'
 import { useState } from 'react'
 import { useGet, useMutate } from '@/hooks/useApi'
-import todoApi from '@/api/todoApi'
-import postApi from '@/api/postApi'
+import todoApi from '@/api/todo'
+import postApi from '@/api/post'
 
 export const Route = createFileRoute('/demo/api')({
   component: ApiDemoPage,

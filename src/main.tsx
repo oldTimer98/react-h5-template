@@ -5,7 +5,7 @@ import { initEruda } from './utils/initEruda'
 import App from './App'
 import 'virtual:uno.css'
 import 'antd-mobile/es/global'
-import './styles/global.scss'
+import './assets/styles/global.scss'
 
 patchAntdMobileForReact19()
 initEruda()

@@ -5,7 +5,7 @@ import {
   type UseQueryOptions,
   type UseMutationOptions,
 } from '@tanstack/react-query'
-import type { ApiResponse } from '@/types'
+import type { ApiResponse } from '@/types/api'
 
 /**
  * 通用 GET 请求 hook
