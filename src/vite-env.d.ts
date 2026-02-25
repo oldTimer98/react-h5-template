@@ -3,6 +3,8 @@
 interface ImportMetaEnv {
   /** 应用标题 */
   readonly VITE_APP_TITLE: string
+  /** 部署基础路径 */
+  readonly VITE_BASE_PATH: string
   /** 开发服务器端口 */
   readonly VITE_PORT: string
   /** 是否自动打开浏览器 */
