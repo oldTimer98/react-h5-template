@@ -11,7 +11,7 @@
     "lint": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,scss,css,json}\"",
     "lint:style": "prettier --check \"src/**/*.{ts,tsx,scss,css,json}\"",
-    "commit": "czg",
+    "commit": "git add . && czg",
     "prepare": "husky"
   },
   "dependencies": {
