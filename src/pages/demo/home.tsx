@@ -11,12 +11,12 @@ function DemoPage() {
   const [inputVal, setInputVal] = useState('')
 
   return (
-    <div className="min-h-screen bg-#f5f5f5">
+    <div className="min-h-screen bg-bg">
       <NavBar onBack={() => navigate({ to: '/' })}>组件示例</NavBar>
 
-      <div className="p-16px flex flex-col gap-16px">
+      <div className="p-[16px] flex flex-col gap-[12px]">
         <Card title="按钮">
-          <div className="flex flex-wrap gap-8px">
+          <div className="flex flex-wrap gap-[8px]">
             <Button color="primary" size="small">
               主要
             </Button>
@@ -34,7 +34,9 @@ function DemoPage() {
 
         <Card title="输入框">
           <Input placeholder="请输入内容" value={inputVal} onChange={setInputVal} clearable />
-          {inputVal && <p className="mt-8px text-12px color-#999">输入内容：{inputVal}</p>}
+          {inputVal && (
+            <p className="mt-[8px] text-[12px] text-text-tertiary">输入内容：{inputVal}</p>
+          )}
         </Card>
 
         <Card title="反馈组件">

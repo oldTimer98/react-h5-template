@@ -25,20 +25,20 @@ interface PageContainerProps {
 
 function PageSkeleton() {
   return (
-    <div className="flex flex-col gap-16px p-16px">
+    <div className="flex flex-col gap-[16px] p-[16px]">
       <Skeleton.Title animated />
       <Skeleton.Paragraph lineCount={3} animated />
-      <div className="flex gap-12px">
+      <div className="flex gap-[12px]">
         <Skeleton animated style={{ width: '80px', height: '80px', borderRadius: '8px' }} />
-        <div className="flex-1 flex flex-col gap-8px">
+        <div className="flex-1 flex flex-col gap-[8px]">
           <Skeleton.Title animated />
           <Skeleton.Paragraph lineCount={2} animated />
         </div>
       </div>
       <Skeleton.Paragraph lineCount={4} animated />
-      <div className="flex gap-12px">
+      <div className="flex gap-[12px]">
         <Skeleton animated style={{ width: '80px', height: '80px', borderRadius: '8px' }} />
-        <div className="flex-1 flex flex-col gap-8px">
+        <div className="flex-1 flex flex-col gap-[8px]">
           <Skeleton.Title animated />
           <Skeleton.Paragraph lineCount={2} animated />
         </div>
@@ -69,7 +69,7 @@ export default function PageContainer({
   }
 
   return (
-    <div className="min-h-screen bg-#f5f5f5 flex flex-col">
+    <div className="min-h-screen bg-bg flex flex-col">
       {title && (
         <NavBar
           onBack={showBack ? handleBack : undefined}
@@ -79,7 +79,7 @@ export default function PageContainer({
           {title}
         </NavBar>
       )}
-      <div className={clsx('flex-1', !loading && 'p-16px', className)} style={style}>
+      <div className={clsx('flex-1', !loading && 'p-[16px]', className)} style={style}>
         {loading ? <PageSkeleton /> : children}
       </div>
       {safeBottom && <SafeArea position="bottom" />}

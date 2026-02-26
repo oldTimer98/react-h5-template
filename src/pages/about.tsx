@@ -15,16 +15,16 @@ function AboutPage() {
     { label: '状态管理', value: 'Zustand' },
     { label: '数据请求', value: 'React Query + Axios' },
     { label: 'UI 组件', value: 'antd-mobile' },
-    { label: '样式方案', value: 'UnoCSS + Sass' },
+    { label: '样式方案', value: 'Tailwind CSS + Sass' },
     { label: '代码规范', value: 'ESLint + Prettier + Husky' },
   ]
 
   return (
-    <div className="min-h-screen bg-#f5f5f5">
+    <div className="min-h-screen bg-bg">
       <NavBar onBack={() => navigate({ to: '/' })}>关于</NavBar>
 
-      <div className="p-16px">
-        <div className="bg-white rounded-12px overflow-hidden shadow-sm">
+      <div className="p-[16px]">
+        <div className="bg-bg-card rounded-[12px] overflow-hidden shadow-sm">
           <List header="技术栈">
             {techStack.map((item) => (
               <List.Item key={item.label} extra={item.value}>
@@ -34,8 +34,8 @@ function AboutPage() {
           </List>
         </div>
 
-        <div className="mt-16px text-center">
-          <Link to="/" className="color-primary text-14px">
+        <div className="mt-[20px] text-center">
+          <Link to="/" className="text-primary text-[14px]">
             ← 返回首页
           </Link>
         </div>

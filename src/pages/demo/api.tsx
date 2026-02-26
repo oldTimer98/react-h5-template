@@ -25,15 +25,15 @@ function ApiDemoPage() {
   const navigate = Route.useNavigate()
 
   return (
-    <div className="min-h-screen bg-#f5f5f5">
+    <div className="min-h-screen bg-bg">
       <NavBar onBack={() => navigate({ to: '/demo/home' })}>API 请求示例</NavBar>
-      <div className="p-16px flex flex-col gap-16px">
+      <div className="p-[16px] flex flex-col gap-[12px]">
         <TodoListSection />
         <CreateTodoSection />
         <CreatePostSection />
 
-        <div className="text-center">
-          <Link to="/" className="color-primary text-14px">
+        <div className="text-center py-[8px]">
+          <Link to="/" className="text-primary text-[14px]">
             ← 返回首页
           </Link>
         </div>
@@ -42,9 +42,6 @@ function ApiDemoPage() {
   )
 }
 
-// ============================================================
-// GET 请求 — useGet + todoApi
-// ============================================================
 function TodoListSection() {
   const { data, isLoading, isError, error, refetch } = useGet(['todos', { _limit: 5 }], () =>
     todoApi.getList({ _limit: 5 }),
@@ -60,7 +57,7 @@ function TodoListSection() {
       }
     >
       {isLoading && (
-        <div className="flex-center py-20px">
+        <div className="flex items-center justify-center py-[24px]">
           <DotLoading color="primary" />
         </div>
       )}
@@ -92,16 +89,15 @@ function TodoListSection() {
         </List>
       )}
 
-      <p className="mt-8px px-12px text-12px color-#999">
-        useGet(['todos'], () =&gt; todoApi.getList())
-      </p>
+      <div className="mt-[8px] px-[12px]">
+        <p className="text-[12px] text-text-tertiary bg-bg-code rounded-[6px] px-[8px] py-[4px] font-mono">
+          useGet(['todos'], () =&gt; todoApi.getList())
+        </p>
+      </div>
     </Card>
   )
 }
 
-// ============================================================
-// POST 请求 — useMutate + invalidateKeys
-// ============================================================
 function CreateTodoSection() {
   const [title, setTitle] = useState('')
 
@@ -128,7 +124,7 @@ function CreateTodoSection() {
 
   return (
     <Card title="POST — 创建 Todo（自动刷新列表）">
-      <div className="flex gap-8px">
+      <div className="flex gap-[8px]">
         <div className="flex-1">
           <Input placeholder="输入 Todo 标题" value={title} onChange={setTitle} clearable />
         </div>
@@ -136,16 +132,15 @@ function CreateTodoSection() {
           创建
         </Button>
       </div>
-      <p className="mt-8px text-12px color-#999">
-        useMutate(data =&gt; todoApi.create(data), {'{'} invalidateKeys: [['todos']] {'}'})
-      </p>
+      <div className="mt-[8px]">
+        <p className="text-[12px] text-text-tertiary bg-bg-code rounded-[6px] px-[8px] py-[4px] font-mono">
+          useMutate(fn, {'{'} invalidateKeys: [['todos']] {'}'})
+        </p>
+      </div>
     </Card>
   )
 }
 
-// ============================================================
-// POST 请求 — 另一个模块，展示返回数据
-// ============================================================
 function CreatePostSection() {
   const {
     mutate,
@@ -171,9 +166,9 @@ function CreatePostSection() {
         </Button>
 
         {result && (
-          <div className="bg-#f0f5ff rounded-8px p-12px text-13px">
-            <p className="color-#333 font-500">返回数据：</p>
-            <pre className="mt-4px color-#666 whitespace-pre-wrap">
+          <div className="bg-[#f0f5ff] rounded-[8px] p-[12px] text-[13px]">
+            <p className="text-text font-medium mb-[4px]">返回数据：</p>
+            <pre className="text-text-secondary text-[12px] whitespace-pre-wrap font-mono leading-relaxed">
               {JSON.stringify(result.data, null, 2)}
             </pre>
           </div>
@@ -181,7 +176,9 @@ function CreatePostSection() {
       </Space>
 
       <Divider />
-      <p className="text-12px color-#999">useMutate(data =&gt; postApi.create(data))</p>
+      <p className="text-[12px] text-text-tertiary bg-bg-code rounded-[6px] px-[8px] py-[4px] font-mono inline-block">
+        useMutate(data =&gt; postApi.create(data))
+      </p>
     </Card>
   )
 }

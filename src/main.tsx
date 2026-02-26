@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { patchAntdMobileForReact19 } from './utils/patchAntdMobile'
 import { initEruda } from './utils/initEruda'
 import App from './App'
-import 'virtual:uno.css'
+import './assets/styles/tailwind.css'
 import 'antd-mobile/es/global'
 import './assets/styles/global.scss'
 

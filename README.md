@@ -14,18 +14,18 @@
 | 请求 | Axios + TanStack Query                       |
 | 状态 | Zustand                                      |
 | UI   | antd-mobile 5                                |
-| 样式 | UnoCSS + Sass                                |
+| 样式 | Tailwind CSS v4 + Sass                       |
 | 动画 | Framer Motion                                |
-| 图标 | UnoCSS Icons（Iconify）                      |
+| 图标 | @iconify/react（Iconify 全集）               |
 | 规范 | ESLint + Prettier + Husky + Commitlint + czg |
 
 ## 功能特性
 
 - **移动端自适应布局** — `postcss-px-to-viewport` 自动将 px 转为 vw，行内样式提供 `pxToVw()` 工具函数，支持 PC 端和横屏适配
-- **原子化 CSS** — UnoCSS 预置 Wind4 + Attributify + Icons + RemToPx + Scrollbar
+- **Tailwind CSS v4** — 最新的 CSS-first 配置模式，通过 `@tailwindcss/postcss` 集成，与 px-to-vw 管道无缝配合
 - **文件路由** — TanStack Router 插件自动生成路由，新建页面即新路由
 - **请求封装** — Axios 拦截器 + 统一错误处理 + 请求日志（开发环境彩色输出）
-- **图标系统** — 内置 Carbon 图标集（纯 CSS 渲染零 JS 开销），可按需安装更多 `@iconify-json/*` 图标包
+- **图标系统** — 基于 `@iconify/react` 组件，支持所有 Iconify 图标集（默认 Carbon），无需预装图标包
 - **环境变量驱动** — 端口、代理、调试工具、构建选项均通过 `.env` 配置
 - **移动端调试** — eruda 集成，环境变量控制 + URL 参数 `?eruda` 临时开启
 - **DevTools** — TanStack Router / Query DevTools 通过环境变量控制显隐
@@ -47,13 +47,12 @@
 │   ├── assets/               # 静态资源 + 样式
 │   │   ├── react.svg
 │   │   └── styles/
-│   │       ├── global.scss          # 全局样式入口
-│   │       ├── reset.scss           # 基础重置
-│   │       ├── variables.scss       # SCSS 变量
-│   │       └── antd-overrides.scss  # antd-mobile 样式覆盖
+│   │       ├── tailwind.css          # Tailwind CSS 入口 + 主题配置
+│   │       ├── global.scss           # 全局样式（布局 + PC适配 + 横屏）
+│   │       └── antd-overrides.scss   # antd-mobile 样式覆盖
 │   ├── components/           # 公共组件
-│   │   ├── ErrorBoundary/index.tsx  # 全局错误边界
-│   │   └── PageContainer/index.tsx  # 页面容器（导航+骨架屏+安全区）
+│   │   ├── ErrorBoundary/index.tsx   # 全局错误边界
+│   │   └── PageContainer/index.tsx   # 页面容器（导航+骨架屏+安全区）
 │   ├── hooks/                # 自定义 Hooks
 │   │   └── useApi.ts
 │   ├── pages/                # 页面（文件路由）
@@ -80,9 +79,8 @@
 ├── .env                      # 通用环境变量
 ├── .env.development          # 开发环境
 ├── .env.production           # 生产环境
-├── uno.config.ts             # UnoCSS 配置
 ├── vite.config.ts            # Vite 配置
-├── postcss.config.js         # PostCSS 配置
+├── postcss.config.js         # PostCSS 配置（Tailwind + px-to-vw）
 ├── commitlint.config.js      # Commitlint 配置
 ├── eslint.config.js          # ESLint 配置
 ├── .prettierrc               # Prettier 配置

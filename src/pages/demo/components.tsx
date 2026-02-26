@@ -28,16 +28,16 @@ function PageContent() {
   return (
     <PageContainer
       title="公共组件"
-      right={<span className="text-13px color-#999">demo</span>}
+      right={<span className="text-[13px] text-text-tertiary">demo</span>}
       loading={loading}
       showBack={showBack}
       safeBottom={safeBottom}
     >
-      <div className="flex flex-col gap-16px">
+      <div className="flex flex-col gap-[12px]">
         <Card title="PageContainer 骨架屏">
-          <div className="flex flex-col gap-12px text-13px color-#666">
+          <div className="flex flex-col gap-[10px] text-[13px] text-text-secondary">
             <p>进入页面自动显示 1.5s 骨架屏，传 loading 属性控制。</p>
-            <div className="bg-#f8f8f8 rounded-8px p-12px font-mono text-12px color-#444">
+            <div className="bg-bg-code rounded-[8px] p-[12px] font-mono text-[12px] text-[#444]">
               {'<PageContainer title="标题" loading={isLoading}>'}
               <br />
               {'  {children}'}
@@ -58,18 +58,16 @@ function PageContent() {
         </Card>
 
         <Card title="ErrorBoundary 错误边界">
-          <div className="flex flex-col gap-12px text-13px color-#666">
-            <p>
-              包裹在 App 最外层，当子组件渲染崩溃时自动捕获， 显示整页的友好错误提示而不是白屏。
-            </p>
-            <div className="bg-#f8f8f8 rounded-8px p-12px font-mono text-12px color-#444">
+          <div className="flex flex-col gap-[10px] text-[13px] text-text-secondary">
+            <p>包裹在 App 最外层，当子组件渲染崩溃时自动捕获，显示整页的友好错误提示而不是白屏。</p>
+            <div className="bg-bg-code rounded-[8px] p-[12px] font-mono text-[12px] text-[#444]">
               {'<ErrorBoundary>'}
               <br />
               {'  <App />'}
               <br />
               {'</ErrorBoundary>'}
             </div>
-            <p className="text-12px color-#999">
+            <p className="text-[12px] text-text-tertiary">
               点击下方按钮模拟整页崩溃，点击「重新加载」可恢复：
             </p>
             <Button size="small" color="danger" onClick={() => setShowBomb(true)}>
@@ -79,22 +77,22 @@ function PageContent() {
         </Card>
 
         <Card title="PageContainer Props 控制">
-          <div className="flex flex-col gap-12px">
+          <div className="flex flex-col gap-[12px]">
             <div className="flex items-center justify-between">
-              <span className="text-14px color-#333">显示返回按钮</span>
+              <span className="text-[14px] text-text">显示返回按钮</span>
               <Switch checked={showBack} onChange={setShowBack} />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-14px color-#333">底部安全区域</span>
+              <span className="text-[14px] text-text">底部安全区域</span>
               <Switch checked={safeBottom} onChange={setSafeBottom} />
             </div>
           </div>
         </Card>
 
         <Card title="功能说明">
-          <div className="flex flex-col gap-8px text-13px color-#666">
+          <div className="flex flex-col gap-[8px] text-[13px] text-text-secondary">
             <p>当前模板包含 2 个公共组件：</p>
-            <div className="flex flex-wrap gap-6px">
+            <div className="flex flex-wrap gap-[6px]">
               <Tag color="primary" fill="outline">
                 PageContainer
               </Tag>
@@ -102,14 +100,14 @@ function PageContent() {
                 ErrorBoundary
               </Tag>
             </div>
-            <p className="text-12px color-#999 mt-4px">
+            <p className="text-[12px] text-text-tertiary mt-[4px]">
               其他 UI 组件（空状态、加载更多、卡片等）直接使用 antd-mobile 即可。
             </p>
           </div>
         </Card>
 
         <Card title="PageContainer Props">
-          <div className="flex flex-col gap-4px font-mono text-12px color-#444">
+          <div className="flex flex-col font-mono text-[12px]">
             {[
               ['title?', 'string', '页面标题'],
               ['showBack?', 'boolean', '显示返回按钮 (true)'],
@@ -122,11 +120,11 @@ function PageContent() {
             ].map(([name, type, desc]) => (
               <div
                 key={name}
-                className="flex items-start gap-8px py-6px border-b border-solid border-#f5f5f5"
+                className="flex items-start gap-[8px] py-[8px] border-b border-border-light last:border-b-0"
               >
-                <span className="color-#1677ff min-w-80px">{name}</span>
-                <span className="color-#999 min-w-90px">{type}</span>
-                <span className="color-#666">{desc}</span>
+                <span className="text-primary min-w-[76px] shrink-0">{name}</span>
+                <span className="text-text-tertiary min-w-[86px] shrink-0">{type}</span>
+                <span className="text-text-secondary">{desc}</span>
               </div>
             ))}
           </div>

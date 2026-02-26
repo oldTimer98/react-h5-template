@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv, type PluginOption } from 'vite'
 import react from '@vitejs/plugin-react-swc'
-import UnoCSS from 'unocss/vite'
 import { tanstackRouter } from '@tanstack/router-plugin/vite'
 import { compression } from 'vite-plugin-compression2'
 import path from 'node:path'
@@ -31,7 +30,6 @@ export default defineConfig(({ mode }) => {
         routesDirectory: './src/pages',
         generatedRouteTree: './src/routeTree.gen.ts',
       }),
-      UnoCSS(),
       react(),
       ...compressionPlugins,
     ],
